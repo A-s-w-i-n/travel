@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+@theme {
+  /* Define your custom font family here */
+  --font-glorify: "Glorify Sans", sans-serif;
+  
+  /* Font families */
+  --font-family-segoe-script: "Segoe Script", cursive;
+  --font-family-montserrat: "Montserrat", sans-serif;
+  --font-family-playfair: "Playfair Display", serif;
+}
+
+/* Orbit button with overlapping ellipse strokes */
+.orbit-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.25rem; /* similar to px-6 py-3 */
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  color: #ffffff;
+  background: transparent;
+  transition: background-color 200ms ease, border-color 200ms ease;
+}
+
+.orbit-btn::before,
+.orbit-btn::after {
+  content: "";
+  position: absolute;
+  inset: -6px -12px; /* extend to create outer orbits */
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+}
+
+.orbit-btn::before {
+  transform: rotate(-12deg);
+}
+
+.orbit-btn::after {
+  transform: rotate(12deg);
+}
+
+.orbit-btn:hover {
+  background: #ef443a; /* vivid red/orange fill */
+  border-color: #ef443a;
+}
+
+/* .orbit-btn:hover::before,
+.orbit-btn:hover::after {
+  border-color: rgba(239,68,58,0.9);
+} */
+
+.torn-image {
+  clip-path: polygon(
+    2% 0%,
+    98% 1%,
+    99% 5%,
+    97% 10%,
+    99% 15%,
+    98% 25%,
+    100% 35%,
+    99% 45%,
+    97% 55%,
+    99% 65%,
+    98% 75%,
+    100% 85%,
+    98% 95%,
+    95% 98%,
+    85% 99%,
+    75% 98%,
+    65% 100%,
+    55% 98%,
+    45% 99%,
+    35% 97%,
+    25% 99%,
+    15% 98%,
+    5% 100%,
+    1% 95%,
+    0% 85%,
+    2% 75%,
+    0% 65%,
+    1% 55%,
+    0% 45%,
+    2% 35%,
+    0% 25%,
+    1% 15%,
+    0% 5%
+  );
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3));
+}
+
+.clip-envelope {
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #ef443a, #ff6b6b);
+  border-radius: 10px;
+  border: 2px solid #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #d32f2f, #ef443a);
+}
+
+::-webkit-scrollbar-corner {
+  background: #f1f1f1;
+}
+
+/* Firefox scrollbar styling */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ef443a #f1f1f1;
+}
+
+/* Segoe Script font class */
+.font-segoe-script {
+  font-family: "Segoe Script", cursive;
+  font-weight: 400;
+}
+
+/* Montserrat font class */
+.font-montserrat {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+/* Playfair Display font class - elegant serif like the image */
+.font-playfair {
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+  font-style: normal;
+}
