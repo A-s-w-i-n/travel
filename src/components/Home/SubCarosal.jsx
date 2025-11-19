@@ -130,7 +130,7 @@ const SubCarosal = ({
   const translateX = -currentIndex * (slideWidth + 24); // 24px gap matches gap-6
 
   return (
-    <div className="flex min-h-screen mt-10 px-4 md:px-8 lg:px-60" ref={containerRef}>
+    <div className="flex min-h-screen mt-10 px-4 md:px-8 lg:px-30" ref={containerRef}>
       <div className={` ${parentClass ?? ""} max-w-full mx-auto w-full`}>
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row justify-between items-start mb-12 gap-6">

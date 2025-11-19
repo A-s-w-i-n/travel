@@ -122,29 +122,29 @@ const Home = () => {
       </div>
 
       {/* Other Sections - responsive spacing */}
-      <div className="space-y-24">
+      <div className="">
         <Offer />
-        <div className="px-4 md:px-8 lg:px-20">
+        <div className="px-4 md:px-8 lg:px-0">
           <SubCarosal classname="w-96" />
         </div>
 
         <ExperienceCommon image={img} />
         <Domestic />
 
-        <div className="px-4 md:px-8 lg:px-20">
+        <div className="px-4 md:px-8 lg:px-0">
           <SubCarosal classname="w-96" />
         </div>
 
-        <div className="px-4 md:px-8 lg:px-20">
+        <div className="px-4 md:px-8 lg:px-0">
           <SubCarosal classname="w-52" />
         </div>
 
         <CustomTip />
-        <div className="px-4 md:px-8 lg:px-20">
+        <div className="px-4 md:px-8 lg:px-0">
           <SideCarosal />
         </div>
 
-        <div className="px-4 md:px-8 lg:px-20">
+        <div className="px-4 md:px-8 lg:px-0">
           <VisaRequirements
             image={sliding1}
             title={"Travel Visa Requirements"}
@@ -157,7 +157,7 @@ const Home = () => {
         <AboutUs />
         <TestimonialCarousel />
 
-        <div className="px-4 md:px-8 lg:px-20">
+        <div className="px-4 md:px-8 lg:px-0">
           <VisaRequirements
             image={sliding2}
             title={"Explore india with us"}

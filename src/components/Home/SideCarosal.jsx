@@ -108,7 +108,7 @@ export default function SideCarosal() {
 
   return (
     <section className="relative py-16 px-4 lg:px-6">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10 items-start">
+      <div className=" lg:ml-10 mx-auto flex flex-col lg:flex-row gap-10 items-start">
         {/* Left */}
         <div className="lg:w-1/3 space-y-4 relative">
           <p className="text-[#ff5722] text-xl font-semibold italic">Upcoming</p>
@@ -120,8 +120,8 @@ export default function SideCarosal() {
         </div>
 
         {/* Carousel */}
-        <div className="lg:w-2/3 relative w-full lg:ml-auto">
-          <button onClick={prev} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-3 hover:bg-gray-100">
+        <div className="lg:w-[55%] relative w-full lg:ml-auto">
+          <button onClick={prev} className="absolute cursor-pointer left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-3 hover:bg-gray-100">
             <ChevronLeft className="w-6 h-6" />
           </button>
 
@@ -152,7 +152,7 @@ export default function SideCarosal() {
             </div>
           </div>
 
-          <button onClick={next} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-3 hover:bg-gray-100">
+          <button onClick={next} className="absolute cursor-pointer right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md rounded-full p-3 hover:bg-gray-100">
             <ChevronRight className="w-6 h-6" />
           </button>
         </div>
