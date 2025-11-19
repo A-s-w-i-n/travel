@@ -29,14 +29,15 @@ const testimonials = [
 ];
 
 const Polaroid = ({ src, alt, size = "md", rotate = "rotate-2" }) => {
+  // responsive size classes so md+ keeps the same visual but smaller screens scale down
   const sizes = {
-    sm: "w-24 h-24",
-    mid: "w-36 h-36",
-    md: "w-64 h-64",
-    lg: "w-80 h-80",
+    sm: "w-20 h-20 md:w-36 md:h-36",
+    md: "w-44 h-44 md:w-64 md:h-64",
+    lg: "w-64 h-64 md:w-80 md:h-80",
   };
+
   return (
-    <div className={`relative  bg-white rounded-xl shadow-xl p-2 ${rotate}`}>
+    <div className={`relative bg-white rounded-xl shadow-xl p-2 ${rotate}`}>
       <img
         src={src}
         alt={alt}
@@ -48,6 +49,7 @@ const Polaroid = ({ src, alt, size = "md", rotate = "rotate-2" }) => {
 };
 
 const TestimonialCarousel = () => {
+  // keeping current = 1 to preserve original behavior (center shows testimonials[1])
   const [current, setCurrent] = useState(1);
   const [direction, setDirection] = useState("next");
   const [animating, setAnimating] = useState(false);
@@ -64,7 +66,6 @@ const TestimonialCarousel = () => {
     setCurrent(nextIndex);
   };
 
-  // Trigger slide-in animation on active change
   React.useEffect(() => {
     setAnimating(true);
     const id = requestAnimationFrame(() => setAnimating(false));
@@ -76,9 +77,9 @@ const TestimonialCarousel = () => {
   const next = testimonials[nextIndex];
 
   return (
-    <div className="w-full py-20 flex flex-col items-center ">
+    <div className="w-full py-20 flex flex-col items-center">
       {/* Headings */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-12 px-4">
         <p className="text-orange-500 font-semibold font-segoe-script mb-3">Testimonial</p>
         <h2 className="text-3xl md:text-5xl font-extrabold mb-3">
           What People Has To Say About Us
@@ -89,27 +90,25 @@ const TestimonialCarousel = () => {
       </div>
 
       {/* Content */}
-      <div className="relative  flex  items-center  justify-center  w-full max-w-full   ">
-        {/* Left preview */}
-        <div className={`hidden  md:flex  w-[30%]    left-0  items-end gap-3  opacity-80 transition-transform duration-500 ease-in-out ${
-          animating ? (direction === "next" ? "-translate-x-6" : "translate-x-6") : "translate-x-0"
-        }`}>
-          <Polaroid
-            src={prev.image}
-            alt={prev.name}
-            size="sm"
-            rotate="rotate-6"
-          />
+      <div className="relative flex items-center justify-center w-full   px-4">
+        {/* Left preview (hidden on small screens) */}
+        <div
+          className={`hidden md:flex w-1/3 items-end gap-3 opacity-80 transition-transform duration-500 ease-in-out ${
+            animating ? (direction === "next" ? "-translate-x-6" : "translate-x-6") : "translate-x-0"
+          }`}
+        >
+          <Polaroid src={prev.image} alt={prev.name} size="sm" rotate="rotate-6" />
           <div className="text-xs w-1/2 text-gray-600">
             <p className="line-clamp-4 leading-5">{prev.text}</p>
             <p className="mt-2 font-semibold text-gray-900">{prev.name}</p>
             <p className="text-[11px] text-gray-500">{prev.role}</p>
           </div>
         </div>
-        {/* center preview */}
-        <div className="flex flex-col w-[40%]  md:flex-row  items-center justify-center gap-8 md:gap-12">
+
+        {/* center preview - responsive: stacks vertically on small screens, stays row on md+ */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 w-full md:w-2/5">
           <div
-            className={`transition-all duration-500 ease-in-out ${
+            className={`transition-all duration-500 ease-in-out flex-shrink-0 ${
               animating
                 ? direction === "next"
                   ? "opacity-0 translate-x-10"
@@ -117,21 +116,14 @@ const TestimonialCarousel = () => {
                 : "opacity-100 translate-x-0"
             }`}
           >
-            <Polaroid
-              src={active.image}
-              alt={active.name}
-              size="md"
-              rotate="rotate-6"
-            />
+            {/* Polaroid will scale responsively: on small screens it will be smaller */}
+            <Polaroid src={active.image} alt={active.name} size="md" rotate="rotate-6" />
           </div>
-          <div
-            className={`max-w-lg  w-1/2 transition-transform duration-500 ease-in-out ${
-              animating ? (direction === "next" ? "translate-x-10" : "-translate-x-10") : "translate-x-0"
-            }`}
-          >
-            <p className="text-gray-700 leading-7 md:text-base">
-              {active.text}
-            </p>
+
+          <div className={`max-w-lg w-full md:w-1/2 transition-transform duration-500 ease-in-out ${
+            animating ? (direction === "next" ? "translate-x-10" : "-translate-x-10") : "translate-x-0"
+          }`}>
+            <p className="text-gray-700 leading-7 md:text-base">{active.text}</p>
             <div className="mt-6">
               <p className="text-lg font-bold text-gray-900">{active.name}</p>
               <p className="text-sm text-gray-500">{active.role}</p>
@@ -139,32 +131,32 @@ const TestimonialCarousel = () => {
           </div>
         </div>
 
-        {/* Right preview */}
-        <div className={`hidden w-[30%] md:flex relative   right-0  justify-end        items-end gap-3    text-right opacity-80 transition-transform duration-500 ease-in-out ${
-          animating ? (direction === "next" ? "-translate-x-6" : "translate-x-6") : "translate-x-0"
-        }`}>
+        {/* Right preview (hidden on small screens) */}
+        <div
+          className={`hidden md:flex w-1/3 items-end gap-3 justify-end text-right opacity-80 transition-transform duration-500 ease-in-out ${
+            animating ? (direction === "next" ? "-translate-x-6" : "translate-x-6") : "translate-x-0"
+          }`}
+        >
           <div className="text-xs w-1/2 text-gray-600 order-2">
             <p className="line-clamp-4 leading-5">{next.text}</p>
             <p className="mt-2 font-semibold text-gray-900">{next.name}</p>
             <p className="text-[11px] text-gray-500">{next.role}</p>
           </div>
-          <Polaroid
-            src={next.image}
-            alt={next.name}
-            size="sm"
-            rotate="rotate-6"
-          />
+          <Polaroid src={next.image} alt={next.name} size="sm" rotate="rotate-6" />
         </div>
       </div>
+
       <div className="flex justify-center mt-10 gap-4">
         <button
           onClick={prevSlide}
+          aria-label="Previous testimonial"
           className="w-10 h-10 rounded-full cursor-pointer bg-gray-100 hover:bg-gray-200 grid place-items-center shadow"
         >
           <ChevronLeft className="w-4 h-4" />
         </button>
         <button
           onClick={nextSlide}
+          aria-label="Next testimonial"
           className="w-10 h-10 rounded-full cursor-pointer bg-gray-100 hover:bg-gray-200 grid place-items-center shadow"
         >
           <ChevronRight className="w-4 h-4" />

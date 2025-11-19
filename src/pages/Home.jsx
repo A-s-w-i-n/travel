@@ -31,8 +31,6 @@ const img =
 
 const images = [img1main, img2big, img3big];
 
-// Navbar Component
-
 const Home = () => {
   const [currentImage, setCurrentImage] = useState(0);
 
@@ -45,15 +43,13 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="">
+    <div className="antialiased">
       {/* Hero Section with sliding carousel */}
-      <div className="relative overflow-hidden min-h-screen ">
+      <div className="relative overflow-hidden min-h-screen">
         {/* Sliding background images */}
         <div
-          className="flex transition-transform duration-[1500ms] ease-in-out  "
-          style={{
-            transform: `translateX(-${currentImage * 100}%)`,
-          }}
+          className="flex transition-transform duration-[1500ms] ease-in-out"
+          style={{ transform: `translateX(-${currentImage * 100}%)` }}
         >
           {images.map((src, index) => (
             <div
@@ -64,105 +60,122 @@ const Home = () => {
           ))}
         </div>
 
-        <div className="absolute inset-x-0 top-0 h-32 md:h-40 bg-gradient-to-b from-black/70 via-black/40 to-transparent pointer-events-none" />
+        {/* Top gradient to make navbar readable */}
+        <div className="absolute inset-x-0 top-0 h-28 md:h-36 bg-gradient-to-b from-black/70 via-black/30 to-transparent pointer-events-none" />
 
-        <div>
-          <div className="absolute inset-x-0 top-0 z-20 px-6 md:px-12">
-            <Navbar />
-          </div>
+        {/* Navbar (kept absolute so it overlaps hero) */}
+        <div className="absolute inset-x-0 top-0 z-30 px-4 md:px-8">
+          <Navbar />
+        </div>
 
-          <div className="absolute inset-0 flex flex-col items-center justify-center z-10 text-white px-6 md:px-12">
-            <div className="text-center max-w-5xl">
-              <h1 className="text-6xl md:text-8xl  font-playfair font-bold mb-6 tracking-wide">
-                Dream
-              </h1>
-              <p className="text-xl md:text-2xl text-white/90 mb-12 font-light">
-                Give Your Dream Locations A Fun And Well-Deserved Adventure.
-                Make Memories Worth Living Again.
-              </p>
+        {/* Centered hero content */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-20 text-white px-4 md:px-12">
+          <div className="text-center max-w-4xl">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-playfair font-bold mb-4 md:mb-6 tracking-wide">
+              Dream
+            </h1>
+            <p className="text-base sm:text-lg md:text-2xl text-white/90 mb-8 md:mb-12 font-light">
+              Give Your Dream Locations A Fun And Well-Deserved Adventure. Make Memories Worth Living Again.
+            </p>
 
-              <p className="text-lg md:text-xl mb-8 font-medium">
-                Find Your Journey
-              </p>
+            <p className="text-sm md:text-lg mb-6 font-medium">Find Your Journey</p>
 
-              {/* Search Box */}
-              <div
-                div
-                className="bg-white/95 backdrop-blur-sm rounded-full shadow-2xl px-6 py-3 flex flex-col md:flex-row items-center gap-4 max-w-[80%] mx-auto"
-              >
-                <select className="flex-1 bg-transparent text-gray-700 text-base font-medium outline-none px-4 py-2 min-w-[100px]">
+            {/* Search Box */}
+            <div className="w-full max-w-3xl mx-auto">
+              <div className="bg-white/95 backdrop-blur-sm rounded-full shadow-2xl px-4 py-3 flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
+                <select className="flex-1 bg-transparent text-gray-700 text-sm md:text-base font-medium outline-none px-3 py-2 min-w-[90px]">
                   <option>International</option>
                   <option>Domestic</option>
                 </select>
-                <div className="hidden md:block w-px h-8 bg-gray-300"></div>
-                <select className="flex-1 bg-transparent text-gray-700 text-base font-medium outline-none px-4 py-2 min-w-[100px]">
+
+                <div className="hidden sm:block w-px h-8 bg-gray-300" />
+
+                <select className="flex-1 bg-transparent text-gray-700 text-sm md:text-base font-medium outline-none px-3 py-2 min-w-[90px]">
                   <option>Adventure</option>
                   <option>Cultural</option>
                   <option>Relaxation</option>
                 </select>
-                <div className="hidden md:block w-px h-8 bg-gray-300"></div>
-                <select className="flex-1 bg-transparent text-gray-700 text-base font-medium outline-none px-4 py-2 min-w-[100px]">
+
+                <div className="hidden sm:block w-px h-8 bg-gray-300" />
+
+                <select className="flex-1 bg-transparent text-gray-700 text-sm md:text-base font-medium outline-none px-3 py-2 min-w-[90px]">
                   <option>1-3 Days</option>
                   <option>4-7 Days</option>
                   <option>1-2 Weeks</option>
                   <option>2+ Weeks</option>
                 </select>
-                <button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold px-12 py-3 rounded-full transition-all duration-300 shadow-lg">
+
+                <button className="whitespace-nowrap bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold px-8 sm:px-10 py-2 rounded-full transition-all duration-300 shadow-lg">
                   Search
                 </button>
               </div>
 
-              <p className="text-base md:text-lg mt-6 text-white/80">
-                International and domestic tours from Kerala. Packages to all
-                the 7 continents.
-              </p>
+              <p className="text-xs sm:text-sm md:text-base mt-4 text-white/80 text-center">International and domestic tours from Kerala. Packages to all the 7 continents.</p>
             </div>
           </div>
+        </div>
 
-          {/* Smoke overlay at bottom */}
-          <div className="absolute mt-0 inset-x-0 -bottom-20 pointer-events-none select-none z-10">
-            <img
-              src={smokeImge}
-              alt="smoke overlay"
-              className="w-full h-auto "
-            />
-          </div>
+        {/* Smoke overlay at bottom */}
+        <div className="absolute inset-x-0 -bottom-20 pointer-events-none select-none z-20">
+          <img src={smokeImge} alt="smoke overlay" className="w-full h-auto" />
         </div>
       </div>
 
-      {/* Other Sections */}
-      <Offer />
-      <SubCarosal classname="w-96" />
-      <ExperienceCommon image={img} />
-      <Domestic />
-      <SubCarosal classname="w-96" />
+      {/* Other Sections - responsive spacing */}
+      <div className="space-y-24">
+        <Offer />
+        <div className="px-4 md:px-8 lg:px-20">
+          <SubCarosal classname="w-96" />
+        </div>
 
-      <SubCarosal classname="w-52 " />
-      <CustomTip />
-      <SideCarosal />
-      <VisaRequirements
-        image={sliding1}
-        title={"Travel Visa Requirements"}
-        disc={
-          "Wish to travel independently or exclusively with family or friends? Our experts would love to create a package just for you!"
-        }
-      />
+        <ExperienceCommon image={img} />
+        <Domestic />
 
-      <AboutUs />
-      <TestimonialCarousel />
-      <VisaRequirements
-        image={sliding2}
-        title={"Explore india with us"}
-        disc={
-          "Wish to travel independently or exclusively with family or friends? Our experts would love to create a package just for you!"
-        }
-      />
+        <div className="px-4 md:px-8 lg:px-20">
+          <SubCarosal classname="w-96" />
+        </div>
 
-      <ForthSection />
-      <FifthSection smokeImage={smokeImge} image={img} />
-      <SixthSection image={img} />
-      <SeventhSection image={img} />
-      <Footer />
+        <div className="px-4 md:px-8 lg:px-20">
+          <SubCarosal classname="w-52" />
+        </div>
+
+        <CustomTip />
+        <div className="px-4 md:px-8 lg:px-20">
+          <SideCarosal />
+        </div>
+
+        <div className="px-4 md:px-8 lg:px-20">
+          <VisaRequirements
+            image={sliding1}
+            title={"Travel Visa Requirements"}
+            disc={
+              "Wish to travel independently or exclusively with family or friends? Our experts would love to create a package just for you!"
+            }
+          />
+        </div>
+
+        <AboutUs />
+        <TestimonialCarousel />
+
+        <div className="px-4 md:px-8 lg:px-20">
+          <VisaRequirements
+            image={sliding2}
+            title={"Explore india with us"}
+            disc={
+              "Wish to travel independently or exclusively with family or friends? Our experts would love to create a package just for you!"
+            }
+          />
+        </div>
+
+        <ForthSection />
+        <div className="px-4 md:px-8 lg:px-20">
+          <FifthSection smokeImage={smokeImge} image={img} />
+        </div>
+
+        <SixthSection image={img} />
+        <SeventhSection image={img} />
+        <Footer />
+      </div>
     </div>
   );
 };
