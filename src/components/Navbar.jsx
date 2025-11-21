@@ -35,7 +35,7 @@ export default function Navbar() {
   // Close on outside click or escape
   useEffect(() => {
     function onKey(e) {
-      if (e.key === "Escape") seteMobileOpen(false);
+      if (e.key === "Escape") setMobileOpen(false);
     }
 
     function onDocClick(e) {
@@ -88,7 +88,7 @@ export default function Navbar() {
                 setMobileOpen(false);
                 navigate("/enquire");
               }}
-              className="w-full rounded-full border border-white/20 px-6 py-2 text-sm font-medium hover:bg-white hover:text-[#002b43] transition-all"
+              className="w-full rounded-full cursor-pointer border border-white/20 px-6 py-2 text-sm font-medium hover:bg-white hover:text-[#002b43] transition-all"
             >
               Enquire
             </button>

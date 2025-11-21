@@ -8,6 +8,7 @@ import Experience from "./pages/Experience";
 import Visa from "./pages/Visa";
 import About from "./pages/About";
 import CustomTip from "./pages/CustomTip";
+import Enquire from "./components/common/Enquire";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route path="/visa" element={<Visa />} />
         <Route path="/about" element={<About />} />
         <Route path="/custom" element={<CustomTip />} />
+        <Route path="/enquire" element={<Enquire />} />
+
         {/* <Route path="/about" element={<About />} /> */}
       </Routes>
     </Router>
